@@ -1,11 +1,11 @@
 package entities;
 
 public class ADTIntegerNode {
-    private int element;
+    private final int ELEMENT;
     private ADTIntegerNode next;
 
     public ADTIntegerNode(int element) {
-        this.element = element;
+        this.ELEMENT = element;
         next = null;
     }
 
@@ -18,6 +18,6 @@ public class ADTIntegerNode {
     }
 
     public int getElement() {
-        return element;
+        return ELEMENT;
     }
 }

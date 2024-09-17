@@ -15,7 +15,9 @@ public class ADTIntegerLinkedList {
 
     public void insertAtStart(int element) {
         ADTIntegerNode newNode = new ADTIntegerNode(element);
-        newNode.setNext(start);
+
+        if (!isEmpty()) newNode.setNext(start);
+
         start = newNode;
         elements++;
     }
@@ -24,7 +26,7 @@ public class ADTIntegerLinkedList {
         ADTIntegerNode newNode = new ADTIntegerNode(element);
 
         if (isEmpty()) {
-            start = newNode;
+            insertAtStart(element);
         } else {
             ADTIntegerNode current = start;
 
@@ -40,8 +42,6 @@ public class ADTIntegerLinkedList {
 
     @Override
     public String toString() {
-        if (isEmpty()) return "List is empty";
-
         StringBuilder linkedListString = new StringBuilder();
         ADTIntegerNode current = start;
 
