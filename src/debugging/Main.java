@@ -25,6 +25,11 @@ public class Main {
             System.out.println(linkedList);
 
             System.out.println();
+
+            linkedList.insertAtIndex(2, 19);
+            linkedList.insertAtIndex(2, 78);
+
+            System.out.println(linkedList);
         }
         catch (Exception exception) {
             System.err.println(exception.getMessage());

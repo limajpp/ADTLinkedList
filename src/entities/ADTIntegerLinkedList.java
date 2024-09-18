@@ -40,6 +40,30 @@ public class ADTIntegerLinkedList {
         elements++;
     }
 
+    public void insertAtIndex(int index, int element) {
+        if (index < 0 || index > elements) throw new IndexOutOfBoundsException("Invalid index.");
+        if (index == 0) {
+            insertAtStart(element);
+            return;
+        }
+        if (index == elements) {
+            insertAtEnd(element);
+            return;
+        }
+
+        ADTIntegerNode newNode = new ADTIntegerNode(element);
+        ADTIntegerNode currentNode = start;
+
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = currentNode.getNext();
+        }
+
+        newNode.setNext(currentNode.getNext());
+        currentNode.setNext(newNode);
+
+        elements++;
+    }
+
     @Override
     public String toString() {
         StringBuilder linkedListString = new StringBuilder();
