@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.NoSuchElementException;
+
 public class ADTIntegerLinkedList {
     private ADTIntegerNode start;
     private int elements;
@@ -22,6 +24,13 @@ public class ADTIntegerLinkedList {
         elements++;
     }
 
+    public void removeAtStart() {
+        if (isEmpty()) throw new NoSuchElementException("List is empty.");
+
+        start = start.getNext();
+        elements--;
+    }
+
     public void insertAtEnd(int element) {
         ADTIntegerNode newNode = new ADTIntegerNode(element);
 
@@ -38,6 +47,25 @@ public class ADTIntegerLinkedList {
         }
 
         elements++;
+    }
+
+    public void removeAtEnd() {
+        if (isEmpty()) throw new NoSuchElementException("List is empty.");
+        if (elements == 1) {
+            removeAtStart();
+            return;
+        }
+
+        ADTIntegerNode previousNode = null;
+        ADTIntegerNode currentNode = start;
+
+        while (currentNode.getNext() != null) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+
+        previousNode.setNext(null);
+        elements--;
     }
 
     public void insertAtIndex(int index, int element) {
@@ -77,6 +105,6 @@ public class ADTIntegerLinkedList {
         linkedListString.append("null");
 
         return "linkedList: " + linkedListString + ";\n" +
-                "elements: " + elements + ".";
+                "elements: " + elements + ".\n";
     }
 }
