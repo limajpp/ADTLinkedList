@@ -2,8 +2,6 @@ package debugging;
 
 import entities.ADTIntegerLinkedList;
 
-import java.util.NoSuchElementException;
-
 public class Main {
     public static void main(String[] args) {
         // Debugging...
@@ -37,16 +35,8 @@ public class Main {
             linkedList.removeAtEnd();
 
             System.out.println(linkedList);
-
-            linkedList.removeAtIndex(1);
-
-            System.out.println(linkedList);
-
-            linkedList.removeAtIndex(0);
-
-            System.out.println(linkedList);
         }
-        catch (NoSuchElementException | IndexOutOfBoundsException exception) {
+        catch (Exception exception) {
             System.err.println(exception.getMessage());
         }
     }
