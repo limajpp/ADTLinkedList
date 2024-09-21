@@ -64,7 +64,8 @@ public class ADTIntegerLinkedList {
             currentNode = currentNode.getNext();
         }
 
-        previousNode.setNext(null);
+        assert previousNode != null;
+        previousNode.setNext(currentNode.getNext());
         elements--;
     }
 
@@ -90,6 +91,24 @@ public class ADTIntegerLinkedList {
         currentNode.setNext(newNode);
 
         elements++;
+    }
+
+    public void removeAtIndex(int index) {
+        if (isEmpty()) throw new NoSuchElementException("List is empty.");
+        if (index < 0 || index >= elements) throw new IndexOutOfBoundsException("Invalid index.");
+        if (index == 0) {
+            removeAtStart();
+            return;
+        }
+
+        ADTIntegerNode currentNode = start;
+
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = currentNode.getNext();
+        }
+
+        currentNode.setNext(currentNode.getNext().getNext());
+        elements--;
     }
 
     @Override
